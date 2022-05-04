@@ -1,14 +1,14 @@
 import {applyMiddleware, combineReducers, createStore, compose, configureStore} from 'redux';
 import { authReducer } from './auth/authReducer';
-import { deviceListReducer } from './DeviceList-reducer';
+import { deviceListReducer } from './deviceList/deviceListReducer';
 import thunkMiddleware from 'redux-thunk'
 import { initilazeReducer } from './init/initReducer';
 
 
 const rootStore = combineReducers({
-    // deviceListPage : deviceListReducer,
     auth: authReducer,
-    init: initilazeReducer
+    init: initilazeReducer,
+    deviceListPage : deviceListReducer,
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

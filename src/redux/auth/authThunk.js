@@ -1,7 +1,7 @@
-import {authAPI} from '../../api/Api';
+import { authAPI } from '../../api/Api';
 import { IdKey, tokenKey } from '../../utils/constants';
 import { addDataLocalStorage } from '../../utils/localStorage';
-import { loginRequest, loginSuccess, loginError } from './actionCreaters';
+import { loginRequest, loginSuccess, loginError, logoutRequest } from './actionCreaters';
 
 export const requestLoginThunk = ({login, password}) => async (dispatch) => {
     dispatch(loginRequest())
@@ -14,3 +14,12 @@ export const requestLoginThunk = ({login, password}) => async (dispatch) => {
         dispatch(loginError())
     }
 }
+
+// export const requestLogoutThunk = () => async (dispatch) => {
+//     const response = await authAPI.logout();
+
+//     if(response.data.resultCode === 0){
+//         dispatch(logoutRequest())
+//     }   
+        
+// }

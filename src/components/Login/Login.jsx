@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {requestLoginThunk} from '../../redux/auth/authThunk';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import Input from '@mui/material/Input';
+import SendIcon from '@mui/icons-material/Send';
+import DeviceList from '../DeviceList/DeviceList';
 
-import styles from './Login.module.scss'
+import styles from './Login.module.scss';
 
-const Login = () => {
+const Login = ({isAuth}) => {
     const dispatch = useDispatch();
 
     const [login, setLogin] = useState(null);
@@ -24,14 +29,27 @@ const Login = () => {
         setPassword(value)
     }
 
+    const ariaLabel = { 'aria-label': 'description' };
+
     return (
-        <div className={styles.LoginFormWrapper}>
-            <form>
+        <>
+        {isAuth? <DeviceList />: <div className={styles.LoginFormWrapper}>
+            {/* <form>
             <input type='email' onChange={onLoginChange} value={login}/>
             <input type='password' onChange={onPasswordChange} value={password}/>
             <button onClick={onLoginRequest}> LOGIN </button>
-            </form>
-        </div>
+            </form> */}
+
+            <Box component="form" sx={{'& > :not(style)': { m: 1 },}} noValidate autoComplete="off" >
+                <h2 style={{textAlign: 'center'}}>Login</h2>
+                <Input type='email' onChange={onLoginChange} defaultValue={login} placeholder="Login" inputProps={ariaLabel} />
+                <Input type='password' onChange={onPasswordChange} defaultValue={password} placeholder="Password" inputProps={ariaLabel} />
+                <Button size="small" onClick={onLoginRequest} style={{backgroundColor: 'orange', color:'black', float:'right'}}
+                variant="contained" endIcon={<SendIcon />}>Send</Button>
+            </Box>
+            </div>
+        }
+        </>
     )
 }
 

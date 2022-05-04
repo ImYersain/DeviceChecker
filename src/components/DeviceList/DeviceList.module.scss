@@ -1,13 +1,14 @@
 .DeviceListWrapper {
-    display: flex;
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 1300px;
-    justify-content: space-between;
+    margin: 0 auto;
     .ItemCard {
-        width: 200px;
-        text-align:center;
+        margin: 10px 10px;
     }
 }
 .SearchPanel{
-    height: 100px;
+    height: 50px;
     background-color: gray;
 }

@@ -12,7 +12,7 @@ export const authAPI = {
         return instance.post(`/login`,{ login, password })
     },  
     logout(){
-        return instance.delete(`auth/login`)
+        return instance.delete(`/login`)
     },
     userMe({token, id}){
         return instance.get(`users/${id}`, {
@@ -25,14 +25,18 @@ export const authAPI = {
 
 export const devicesAPI = {
     
-    getPhones(){
-        return instance.get(`/phones`)
+    getDevices(token){
+        return instance.get(`/phones`, { 
+            headers: {
+                'Auth-Token': token
+            }
+        })
         .then(response => {
             console.log(response.data)
             return response.data
         })
     },
-    getPhone(id){
+    getDevice(id){
         return instance.get(`/phones/${id}`)
         .then(response => {
             return response.data
