@@ -1,0 +1,13 @@
+.DeviceListWrapper {
+    display: flex;
+    width: 1300px;
+    justify-content: space-between;
+    .ItemCard {
+        width: 200px;
+        text-align:center;
+    }
+}
+.SearchPanel{
+    height: 100px;
+    background-color: gray;
+}

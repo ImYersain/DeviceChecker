@@ -1,0 +1,17 @@
+.headerWrapper {
+    padding: 5px;
+    display: flex;
+    height: 100px;
+    background-color: orange;
+    justify-content: space-between;
+}
+.loginBlock{
+    float: right
+}
+.loginBlock button{
+    width: 100px;
+    height: 50px;
+}
+.logoBlock{
+ display: flex;
+}
