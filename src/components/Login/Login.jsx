@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
+import {Navigate} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {requestLoginThunk} from '../../redux/auth/authThunk';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
 import SendIcon from '@mui/icons-material/Send';
-import DeviceList from '../DeviceList/DeviceList';
 
 import styles from './Login.module.scss';
 
@@ -33,7 +33,7 @@ const Login = ({isAuth}) => {
 
     return (
         <>
-        {isAuth? <DeviceList />: <div className={styles.LoginFormWrapper}>
+        {isAuth? <Navigate to='/devices'/>: <div className={styles.LoginFormWrapper}>
             {/* <form>
             <input type='email' onChange={onLoginChange} value={login}/>
             <input type='password' onChange={onPasswordChange} value={password}/>

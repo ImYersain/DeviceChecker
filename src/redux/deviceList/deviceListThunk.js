@@ -1,6 +1,7 @@
 import { devicesAPI } from '../../api/Api';
 import { tokenKey } from '../../utils/constants';
-import { devicesSuccess } from './deviceListActionCreater';
+import { devicesSuccess, devicesError } from './deviceListActionCreater';
+import { getByKeyFromLocalStorage } from '../../utils/localStorage';
 
 
 
@@ -8,9 +9,9 @@ import { devicesSuccess } from './deviceListActionCreater';
 export const GetDevicesRequestThunk = () => async (dispatch) => {
     const token = getByKeyFromLocalStorage(tokenKey)
     try {
-        const {data} = await devicesAPI.getDevices(token)
-        dispatch(devicesSuccess(data))    
+        const data = await devicesAPI.getDevices(token);
+        dispatch(devicesSuccess(data))   
     } catch (error) {
-        dispatch(devicesError(error))
+        alert('error')
     }
-}
+} 

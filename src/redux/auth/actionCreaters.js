@@ -8,11 +8,11 @@ export const loginRequest = () => {
        type: LOGIN_REQUEST
    }
 }
-export const logoutRequest = () => {
-    return {
-        type: LOGOUT_REQUEST
-    }
- }
+// export const logoutRequest = () => {
+//     return {
+//         type: LOGOUT_REQUEST
+//     }
+//  }
 
 export const loginSuccess = (payload) => {
     return {
