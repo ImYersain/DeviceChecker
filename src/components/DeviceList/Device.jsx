@@ -6,27 +6,30 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export const Device = () => {
+export const Device = ({device}) => {
     return (
-            <Card sx={{ maxWidth: 345, margin: '10px 10px' }} >
+            <Card sx={{ maxWidth: 345, margin: '30px 10px' }} >
+                <div style={{'height': '140px', 'width': '100px', 'margin':'10px auto'}}>
                 <CardMedia
                     component="img"
-                    height="140"
-                    image="https://cdn.shopify.com/s/files/1/0024/9803/5810/products/580992-Product-1-I-637824115977343671_800x800.jpg?v=1646776346"
-                    alt="green iguana"
+                    width="100%"
+                    image={device.image}
+                    alt="phone"
                 />
+                </div>
+                
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        Iphone 13 PRO Green
+                        {device.model}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        Brand: Apple
+                        Brand: {device.vendor}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        OC: IOS
+                        OS: {device.os}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        Status: Busy
+                        <b>Status:</b> {device.borrowed? `borrowed by ${device.borrowed.user.name}`: 'avialible'}
                     </Typography>
                 </CardContent>
                 <CardActions>

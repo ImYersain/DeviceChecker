@@ -29,23 +29,23 @@ export const authReducer = (state = initialState, action) => {
             }
         }
     }
-    // case LOGOUT_REQUEST: {
-    //     return {
-    //         ...state,
-    //         authStatus: {
-    //             ...state.authStatus,
-    //             pending: true
-    //         },
-    //         isAuth: false,
-    //         user: {
-    //             id: null,
-    //             type: null,
-    //             login: null,
-    //             name: null,
-    //             token: null
-    //         }
-    //     }
-    // }
+    case LOGOUT_REQUEST: {
+        return {
+            ...state,
+            authStatus: {
+                ...state.authStatus,
+                pending: true
+            },
+            isAuth: false,
+            user: {
+                id: null,
+                type: null,
+                login: null,
+                name: null,
+                token: null
+            }
+        }
+    }
     case LOGIN_SUCCESS: {
         return {
             ...state,

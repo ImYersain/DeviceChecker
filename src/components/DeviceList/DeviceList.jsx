@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
-import { compose } from 'redux';
-import { withAuthRedirect } from '../hoc/withAuthRedirect';
+import React from 'react';
 import { SearchPanel } from './SearchPanel';
 import { Device } from './Device';
-import { GetDevicesRequestThunk } from '../../redux/deviceList/deviceListThunk';
 
 import styles from './DeviceList.module.scss';
 
@@ -12,12 +9,8 @@ import styles from './DeviceList.module.scss';
 
 
 
-const DeviceList = () => {
-    // useEffect(() => {
-    //     const token = getByKeyFromLocalStorage(tokenKey);
-    //     console.log(devicesAPI.getDevices(token))
-    //     GetDevicesRequestThunk()
-    // }, [])
+const DeviceList = ({devices}) => {
+    
 
     return (
         <>
@@ -26,17 +19,10 @@ const DeviceList = () => {
             </div> */}
             <SearchPanel />
             <div className={styles.DeviceListWrapper}>
-                <Device />
-                <Device />
-                <Device />
-                <Device />
-                <Device />
-                <Device />
-                <Device />
-                <Device />
+                {devices.map(device => <Device key={device.id} device={device} /> )}
             </ div>
         </>
     )
 }
 
-export default compose(withAuthRedirect)(DeviceList);
+export default DeviceList;

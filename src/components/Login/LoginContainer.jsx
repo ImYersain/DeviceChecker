@@ -1,20 +1,17 @@
 import React, {useState} from 'react';
-import {Navigate} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getIsAuth } from '../../redux/auth/authSelector';
 import {requestLoginThunk} from '../../redux/auth/authThunk';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Input from '@mui/material/Input';
-import SendIcon from '@mui/icons-material/Send';
-
-import styles from './Login.module.scss';
 import Login from './Login';
 
-const LoginContainer = ({isAuth}) => {
-    const dispatch = useDispatch();
 
+const LoginContainer = () => {
+
+    const dispatch = useDispatch();
+    const isAuth = useSelector(getIsAuth);
     const [login, setLogin] = useState(null);
     const [password, setPassword] = useState(null);
+
 
     const onLoginRequest = (e) => {
         e.preventDefault();
@@ -30,11 +27,12 @@ const LoginContainer = ({isAuth}) => {
         setPassword(value)
     }
 
-    const ariaLabel = { 'aria-label': 'description' };
 
-    return ( <></>
-        // <><Login props={onLoginChange, login, onPasswordChange, password, onLoginRequest} /></>
-    )
+
+    return <>
+        <Login isAuth={isAuth} login={login} password={password} onLoginChange={onLoginChange}
+        onPasswordChange={onPasswordChange} onLoginRequest={onLoginRequest} />
+    </>
 }
 
 export default LoginContainer; 

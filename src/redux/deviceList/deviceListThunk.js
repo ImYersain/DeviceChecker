@@ -12,6 +12,6 @@ export const GetDevicesRequestThunk = () => async (dispatch) => {
         const data = await devicesAPI.getDevices(token);
         dispatch(devicesSuccess(data))   
     } catch (error) {
-        alert('error')
+        dispatch(devicesError(error))
     }
 } 

@@ -1,21 +1,19 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import {Route, Routes, BrowserRouter, Navigate} from 'react-router-dom';
-import { AppHeader } from './components/Header/AppHeader';
-import Login from './components/Login/Login';
-import DeviceList from './components/DeviceList/DeviceList';
+import { AppHeaderContainer } from './components/Header/AppHeaderContainer';
+import LoginContainer from './components/Login/LoginContainer';
+import DeviceListContainer from './components/DeviceList/DeviceListContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { initThunk } from './redux/init/initThunk';
 import { getIsInit } from './redux/init/initSelector';
-import { getIsAuth, getUser } from './redux/auth/authSelector';
 import Preloader from './assets/Preloader';
 
 
 function App() {
   const dispatch = useDispatch();
   const isInit = useSelector(getIsInit);
-  const isAuth = useSelector(getIsAuth);
-  const user = useSelector(getUser);
+
 
   useEffect(() => {
     dispatch(initThunk())  
@@ -27,13 +25,13 @@ function App() {
   }
   return (
     <>
-    <BrowserRouter>
-        <AppHeader isAuth={isAuth} user={user} />
+    <BrowserRouter>  
      <div className="App">
+     <AppHeaderContainer />
         <div className="App-wrapper-content">
         <Routes>
-          <Route path='/login'  element={<Login isAuth={isAuth} />}/>
-          <Route path='/devices' element={<DeviceList />}/>
+          <Route path='/login'  element={<LoginContainer />}/>
+          <Route path='/devices' element={<DeviceListContainer />}/>
           <Route exact path='/' element={<Navigate to='/login' /> }/>
         </Routes> 
       </div>

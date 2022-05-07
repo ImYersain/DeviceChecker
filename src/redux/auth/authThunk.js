@@ -15,11 +15,7 @@ export const requestLoginThunk = ({login, password}) => async (dispatch) => {
     }
 }
 
-// export const requestLogoutThunk = () => async (dispatch) => {
-//     const response = await authAPI.logout();
-
-//     if(response.data.resultCode === 0){
-//         dispatch(logoutRequest())
-//     }   
-        
-// }
+export const requestLogoutThunk = () => async (dispatch) => {
+    dispatch(logoutRequest());
+    localStorage.clear();
+}
