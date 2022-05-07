@@ -1,9 +1,13 @@
 .DeviceListWrapper {
-    padding-top: 50px;
+    padding: 10px 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 1300px;
     margin: 0 auto;
+    background-color: #edf2f6;
+    margin-top: 30px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px 0px gray;
 }
 .SearchPanel{
     height: 50px;

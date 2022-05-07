@@ -1,0 +1,15 @@
+.createFormWrapper {
+    display: block;
+    width: 1300px;
+    background-color: #edf2f6;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px 0px gray;
+    h3{
+        text-align: center;
+    }
+    form{
+        margin: 0 auto;
+        padding: 30px 0;
+    }
+}

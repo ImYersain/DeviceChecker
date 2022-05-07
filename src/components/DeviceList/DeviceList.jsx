@@ -7,16 +7,10 @@ import styles from './DeviceList.module.scss';
 
 
 
-
-
 const DeviceList = ({devices}) => {
     
-
     return (
         <>
-            {/* <div className={styles.SearchPanel}>
-                <input type="checkbox" ></input>
-            </div> */}
             <SearchPanel />
             <div className={styles.DeviceListWrapper}>
                 {devices.map(device => <Device key={device.id} device={device} /> )}

@@ -7,8 +7,13 @@ import Button from '@mui/material/Button';
 import styles from './AppHeader.module.scss';
 
 
-export const AppHeader = ({ isAuth, user, onLogout }) => {
+
+export const AppHeader = ({ isAuth, user, onLogout, onAddDevice }) => {
     
+    const buttonCreater = (value, handleClick, marginRightValue) => {
+        return <Button onClick={handleClick} size='small' variant="text" 
+        style={{ color: 'black', backgroundColor: 'white', width: '100px', marginRight: marginRightValue}}>{value}</Button>
+    }    
 
     return (
         <>
@@ -23,7 +28,11 @@ export const AppHeader = ({ isAuth, user, onLogout }) => {
                             logout</NavLink> */}
                         <div style={{ 'display': 'flex', 'flexDirection': 'column' }}>
                             <div>{user.login}</div>
-                            <Button onClick={onLogout} size='small' variant="text" style={{ color: 'black', backgroundColor: 'white', width: '100px' }}>Logout</Button>
+                            <div style={{'display': 'flex'}}>
+                                {buttonCreater('logout', onLogout, '10px')}
+                                {user.type === 'admin'? buttonCreater(`add device`, onAddDevice): null}
+                            </div>
+                            
                         </div>
                     </> : <>
                         <img style={{ 'width': '40px', 'height': '40px' }} src={loginAvatar} alt='login-avatar'></img>

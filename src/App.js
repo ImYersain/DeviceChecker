@@ -4,6 +4,7 @@ import {Route, Routes, BrowserRouter, Navigate} from 'react-router-dom';
 import { AppHeaderContainer } from './components/Header/AppHeaderContainer';
 import LoginContainer from './components/Login/LoginContainer';
 import DeviceListContainer from './components/DeviceList/DeviceListContainer';
+import CreateDeviceContainer from './components/CreateDevice/CreateDeviceContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { initThunk } from './redux/init/initThunk';
 import { getIsInit } from './redux/init/initSelector';
@@ -32,6 +33,7 @@ function App() {
         <Routes>
           <Route path='/login'  element={<LoginContainer />}/>
           <Route path='/devices' element={<DeviceListContainer />}/>
+          <Route path='/create' element={<CreateDeviceContainer />}/>
           <Route exact path='/' element={<Navigate to='/login' /> }/>
         </Routes> 
       </div>

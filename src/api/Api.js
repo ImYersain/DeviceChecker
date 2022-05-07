@@ -32,10 +32,28 @@ export const devicesAPI = {
             }
         })
         .then(response => {
-            console.log(response.data)
             return response.data
         })
     },
+    
+    postDevice({token, id, model, os, vendor, image}){
+        return instance.post(`/phones/`, { 
+            headers: {
+                'phone': {
+                    'id': id,
+                    'os': os,
+                    'vendor': vendor,
+                    'model': model,
+                    'image': image,
+                },
+                'Auth-Token': token
+            }
+        })
+        .then(response => {
+            return response.data
+        })
+    },
+
     getDevice(id){
         return instance.get(`/phones/${id}`)
         .then(response => {

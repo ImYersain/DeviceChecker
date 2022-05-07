@@ -6,6 +6,8 @@ import Toolbar from '@mui/material/Toolbar';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -74,6 +76,12 @@ export const SearchPanel = () => {
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
+                        <Select id="system" value='os' label="System" >
+                            <MenuItem value='All'>All</MenuItem>
+                            <MenuItem value='Ios'>IOS</MenuItem>
+                            <MenuItem value='Android'>Android</MenuItem>
+                            <MenuItem value='Windows'>Windows</MenuItem>
+                        </Select>
 
                         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
 
