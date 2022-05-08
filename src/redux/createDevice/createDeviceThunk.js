@@ -9,7 +9,7 @@ export const requestPostThunk = ({id, model, os, vendor, image}) => async (dispa
     dispatch(postRequest())
     const token = getByKeyFromLocalStorage(tokenKey)
     try {
-        const {data} = await devicesAPI.postDevice({token, id, model, os, vendor, image})
+        const {data} = await devicesAPI.postDevice({id, model, os, vendor, image}, token)
         dispatch(loginSuccess(data))
     } catch (error) {
         dispatch(postError)

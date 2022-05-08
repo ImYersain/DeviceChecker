@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -6,7 +6,8 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export const Device = ({device}) => {
+export const Device = ({device, user, onDeleteDevice}) => {
+
     return (
             <Card sx={{ maxWidth: 345, margin: '30px 10px' }} >
                 <div style={{'height': '140px', 'width': '100px', 'margin':'10px auto'}}>
@@ -34,6 +35,7 @@ export const Device = ({device}) => {
                 </CardContent>
                 <CardActions>
                     <Button style={{ margin: '0 auto', color: 'black', backgroundColor: 'orange' }} size="large" >Take it</Button>
+                    {user.type === 'admin'? <Button type='submit' onClick={e => onDeleteDevice(device.id)} style={{ margin: '0 auto', color: 'black', backgroundColor: 'red' }} size="large" >Delete</Button> : null}
                 </CardActions>
             </Card>
     )

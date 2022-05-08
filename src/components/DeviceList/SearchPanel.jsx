@@ -76,7 +76,7 @@ export const SearchPanel = () => {
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
-                        <Select id="system" value='os' label="System" >
+                        <Select id="system" value='All' label="System" >
                             <MenuItem value='All'>All</MenuItem>
                             <MenuItem value='Ios'>IOS</MenuItem>
                             <MenuItem value='Android'>Android</MenuItem>

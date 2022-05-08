@@ -19,7 +19,7 @@ export const AppHeader = ({ isAuth, user, onLogout, onAddDevice }) => {
         <>
             <div className={styles.headerWrapper}>
                 <div className={styles.logoBlock}>
-                    <img src="https://www.etnetera.cz/-a289--png-WXP_F2wn/etnetera-barevne" alt='logo'></img>
+                    <img src="https://www.etnetera.cz/-a289--png-WXP_F2wn/etnetera-barevne" alt='logo' />                 
                 </div>
                 <div className={styles.loginBlock}>
                     {isAuth ? <>

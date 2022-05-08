@@ -4,6 +4,7 @@ import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { CreateDevice } from './CreateDevice';
 import { useDispatch } from 'react-redux';
 import { requestPostThunk } from '../../redux/createDevice/createDeviceThunk';
+import { useNavigate } from 'react-router';
 
 const CreateDeviceContainer = () => {
     const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const CreateDeviceContainer = () => {
     const [os, setOs] = useState(null);
     const [manufacturer, setManufacturer] = useState(null);
     const [image, setImage] = useState(null);
+    const navigate = useNavigate();
 
     const onIdChange = (e) => {
         const value = e.target.value;
@@ -33,10 +35,12 @@ const CreateDeviceContainer = () => {
         const value = e.target.value;
         setImage(value)
     }
+    const onHome = () => {
+        navigate('/')
+    }
 
 
     const onPostRequest = (e) => {
-        e.preventDefault();
         dispatch(requestPostThunk({id, model, os, manufacturer, image}))
     }
 
@@ -44,7 +48,7 @@ const CreateDeviceContainer = () => {
     return <>
         <CreateDevice onIdChange={onIdChange} onModelChange={onModelChange} onOsChange={onOsChange} 
         onManufacturerChange={onManufacturerChange} onImageChange={onImageChange} onPostRequest={onPostRequest}
-        id={id} model={model} os={os} manufacturer={manufacturer} image={image}
+        id={id} model={model} os={os} manufacturer={manufacturer} image={image} onHome={onHome}
         />
     </>
 }

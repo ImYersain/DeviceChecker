@@ -36,28 +36,32 @@ export const devicesAPI = {
         })
     },
     
-    postDevice({token, id, model, os, vendor, image}){
-        return instance.post(`/phones/`, { 
-            headers: {
-                'phone': {
-                    'id': id,
-                    'os': os,
-                    'vendor': vendor,
-                    'model': model,
-                    'image': image,
-                },
-                'Auth-Token': token
+    postDevice({id, model, os, vendor, image}, token){
+        return instance.post(`/phones/`,
+         { body: {
+            'phone': {
+                'id': id,
+                'os': os,
+                'vendor': vendor,
+                'model': model,
+                'image': image,
             }
-        })
+        }} ,
+        { headers: {
+            'Auth-Token': token
+        }})
         .then(response => {
             return response.data
         })
     },
 
-    getDevice(id){
-        return instance.get(`/phones/${id}`)
-        .then(response => {
-            return response.data
+    deleteDevice({token, id}){
+        return instance.delete(`/phones/${id}`,  
+        {  headers: {
+                'Auth-token': token
+            }
         })
     }
+
+    
 }
