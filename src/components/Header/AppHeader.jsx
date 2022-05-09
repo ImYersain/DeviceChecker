@@ -28,7 +28,7 @@ export const AppHeader = ({ isAuth, user, onLogout, onAddDevice }) => {
                             logout</NavLink> */}
                         <div style={{ 'display': 'flex', 'flexDirection': 'column' }}>
                             <div>{user.login}</div>
-                            <div style={{'display': 'flex'}}>
+                            <div style={{'display': 'flex', 'marginTop': '5px'}}>
                                 {buttonCreater('logout', onLogout, '10px')}
                                 {user.type === 'admin'? buttonCreater(`add device`, onAddDevice): null}
                             </div>

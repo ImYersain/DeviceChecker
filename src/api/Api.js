@@ -38,16 +38,14 @@ export const devicesAPI = {
     
     postDevice({id, model, os, vendor, image}, token){
         return instance.post(`/phones/`,
-         { body: {
-            'phone': {
-                'id': id,
-                'os': os,
-                'vendor': vendor,
-                'model': model,
-                'image': image,
+         {
+            'code': id,
+            'os': os,
+            'vendor': vendor,
+            'model': model,
+            'image': image,
             }
-        }} ,
-        { headers: {
+        , { headers: {
             'Auth-Token': token
         }})
         .then(response => {
@@ -61,7 +59,14 @@ export const devicesAPI = {
                 'Auth-token': token
             }
         })
-    }
+    },
 
+    borrowDevice(id, token){
+        return instance.post(`/phones/${id}/borrow`, {},
+        { headers: {
+            'Auth-token': token
+        }
+    })
+    }
     
 }

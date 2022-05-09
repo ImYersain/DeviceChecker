@@ -5,16 +5,19 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import notFound from '../../assets/images/not-found.png';
 
-export const Device = ({device, user, onDeleteDevice}) => {
+export const Device = ({device, user, onDeleteDevice, onBorrow}) => {
+    
+    const isDisabled = device.hasOwnProperty('borrowed')
 
     return (
             <Card sx={{ maxWidth: 345, margin: '30px 10px' }} >
-                <div style={{'height': '140px', 'width': '100px', 'margin':'10px auto'}}>
+                <div style={{'height': '180px', 'width': '120px', 'margin':'20px auto'}}>
                 <CardMedia
                     component="img"
                     width="100%"
-                    image={device.image}
+                    image={device.image? device.image: notFound}
                     alt="phone"
                 />
                 </div>
@@ -34,7 +37,7 @@ export const Device = ({device, user, onDeleteDevice}) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button style={{ margin: '0 auto', color: 'black', backgroundColor: 'orange' }} size="large" >Take it</Button>
+                    <Button disabled={isDisabled} variant='contained' onClick={() => onBorrow(device.id)} style={{ margin: '0 auto', color: 'black' }} size="large" >Take it</Button>
                     {user.type === 'admin'? <Button type='submit' onClick={e => onDeleteDevice(device.id)} style={{ margin: '0 auto', color: 'black', backgroundColor: 'red' }} size="large" >Delete</Button> : null}
                 </CardActions>
             </Card>

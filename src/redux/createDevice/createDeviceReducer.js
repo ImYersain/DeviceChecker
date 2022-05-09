@@ -1,3 +1,4 @@
+import { DEVICES_SUCCESS, GET_DEVICES_REQUEST } from "../deviceList/deviceListActionCreater";
 import { POST_ERROR, POST_REQUEST, POST_SUCCESS } from "./createDeviceActionCreater";
 
 
@@ -14,7 +15,7 @@ const initialState = {
         'model': null,
         'image': null,
     },
-    token: null
+    wasCreated: false
 }
 
 export const createDeviceReducer = (state = initialState, action) => {
@@ -37,7 +38,7 @@ export const createDeviceReducer = (state = initialState, action) => {
                     success: true
                 },
                 device: action.payload,
-                token: action.payload
+                wasCreated: true
             }
         }
         case POST_ERROR: {
@@ -48,8 +49,13 @@ export const createDeviceReducer = (state = initialState, action) => {
                     success: false,
                     error: true
                 },
-                device: null,
-                token: null
+                device: null
+            }
+        }
+        case DEVICES_SUCCESS: {
+            return {
+                ...state,
+                wasCreated: false
             }
         }
         default : return state

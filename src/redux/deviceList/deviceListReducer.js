@@ -1,4 +1,4 @@
-import { GET_DEVICES_REQUEST, DEVICES_SUCCESS, DEVICES_ERROR } from "./deviceListActionCreater"
+import { GET_DEVICES_REQUEST, DEVICES_SUCCESS, DEVICES_ERROR, SHOW_ALLOWED, SORT_DEVICES } from "./deviceListActionCreater"
 
 
 
@@ -8,7 +8,11 @@ const initialState = {
         success: false,
         error: false
     },
-    devices : []
+    devices : [],
+    sortOs: 'all',
+    sortVendor: 'all',
+    areAllowed: false,
+    isBorrow: false
 }
 
 export const deviceListReducer = (state = initialState, action) => {
@@ -19,7 +23,7 @@ export const deviceListReducer = (state = initialState, action) => {
                 ...state,
                 getDevicesRequestStatus: {
                     ...state.getDevicesRequestStatus,
-                    pending: true
+                    pending: true,
                 }
             }
         }
@@ -31,7 +35,7 @@ export const deviceListReducer = (state = initialState, action) => {
                     pending: false,
                     success: true
                 },
-                devices : [...action.payload]
+                devices : [...action.payload],
             }
         }
         case DEVICES_ERROR: {
@@ -45,6 +49,20 @@ export const deviceListReducer = (state = initialState, action) => {
                 },
                 devices : null
             }
-        } default: return state
+        }
+        case SHOW_ALLOWED: {
+            return {
+                ...state,
+                areAllowed: action.payload
+            }
+        }
+        case SORT_DEVICES: {
+            return {
+                ...state,
+                sortVendor: action.payload.vendor,
+                sortOs: action.payload.os
+            }
+        }
+        default: return state
     }
 }
