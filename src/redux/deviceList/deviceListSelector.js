@@ -15,17 +15,17 @@ export const selectSortedDevices = (state) => {
     let sortedDevices = [] 
 
     if(sortOs !== 'all') {
-        sortedDevices = [...devices.filter(device => device.os.toLowerCase() === sortOs.toLowerCase())]
+        sortedDevices = [...devices.filter(device => device.os?.toLowerCase() === sortOs.toLowerCase())]
     }
     if(sortVendor !== 'all') {
-        sortedDevices = [...devices.filter(device => device.vendor.toLowerCase() === sortVendor.toLowerCase())]
+        sortedDevices = [...devices.filter(device => device.vendor?.toLowerCase() === sortVendor.toLowerCase())]
     }
 
 
 
 
     if(sortOs !== 'all' && sortVendor !== 'all') {
-        sortedDevices = [...devices.filter(device => device.os.toLowerCase() === sortOs.toLowerCase() && device.vendor.toLowerCase() === sortVendor.toLowerCase())]
+        sortedDevices = [...devices.filter(device => device.os?.toLowerCase() === sortOs.toLowerCase() && device.vendor?.toLowerCase() === sortVendor.toLowerCase())]
     }
 
     if(areAllowed) {

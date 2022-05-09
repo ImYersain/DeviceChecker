@@ -22,8 +22,8 @@ export const BorrowDeviceThunk = (id) => async (dispatch) => {
     try {
         await devicesAPI.borrowDevice(id, token);
         dispatch(borrowDevice())
+        dispatch(GetDevicesRequestThunk())
     } catch (error) {
         console.log(error)
     }
-    
 }

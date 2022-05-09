@@ -9,7 +9,7 @@ import notFound from '../../assets/images/not-found.png';
 
 export const Device = ({device, user, onDeleteDevice, onBorrow}) => {
     
-    const isDisabled = device.hasOwnProperty('borrowed')
+    const isDisabled = device.hasOwnProperty('borrowed');
 
     return (
             <Card sx={{ maxWidth: 345, margin: '30px 10px' }} >
@@ -33,11 +33,12 @@ export const Device = ({device, user, onDeleteDevice, onBorrow}) => {
                         OS: {device.os}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        <b>Status:</b> {device.borrowed? `borrowed by ${device.borrowed.user.name}`: 'avialible'}
+                        <b>Status: {device.borrowed? `borrowed by ${device.borrowed.user.name}`: 'avialible'}</b>
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button disabled={isDisabled} variant='contained' onClick={() => onBorrow(device.id)} style={{ margin: '0 auto', color: 'black' }} size="large" >Take it</Button>
+                    {device.borrowed? <Button>bring back</Button>:null}
+                    <Button disabled={isDisabled} variant='contained' onClick={() => onBorrow(device.id)} style={{ margin: '0 auto', color: 'black', backgroundColor: (isDisabled?'#edf2f6':'orange') }} size="large" >Take it</Button>
                     {user.type === 'admin'? <Button type='submit' onClick={e => onDeleteDevice(device.id)} style={{ margin: '0 auto', color: 'black', backgroundColor: 'red' }} size="large" >Delete</Button> : null}
                 </CardActions>
             </Card>

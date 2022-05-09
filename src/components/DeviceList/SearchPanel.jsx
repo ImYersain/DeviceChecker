@@ -88,7 +88,7 @@ export const SearchPanel = () => {
                     <Toolbar>
 
                         <Typography
-                            variant="h7"
+                            variant="h6"
                             noWrap
                             component="div"
                             sx={{ display: { xs: 'none', sm: 'block', color: 'black' } }}
@@ -123,7 +123,6 @@ export const SearchPanel = () => {
                             <MenuItem value='lenovo'>LENOVO</MenuItem>
                             <MenuItem value='motorola'>MOTOROLA</MenuItem>
                             <MenuItem value='huawei'>HUAWEI</MenuItem>
-                            <MenuItem value='vadafone'>VADAFONE</MenuItem>
                             <MenuItem value='asus'>ASUS</MenuItem>
                             </Select>
                         </FormControl>
