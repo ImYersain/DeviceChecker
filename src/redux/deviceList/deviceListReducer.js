@@ -12,7 +12,6 @@ const initialState = {
     sortOs: 'all',
     sortVendor: 'all',
     areAllowed: false,
-    isBorrow: false
 }
 
 export const deviceListReducer = (state = initialState, action) => {

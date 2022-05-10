@@ -1,6 +1,6 @@
 import { devicesAPI } from '../../api/Api';
 import { tokenKey } from '../../utils/constants';
-import { devicesSuccess, devicesError, getDevicesRequset, borrowDevice } from './deviceListActionCreater';
+import { devicesSuccess, devicesError, getDevicesRequset, borrowDevice, bringBackDevice } from './deviceListActionCreater';
 import { getByKeyFromLocalStorage } from '../../utils/localStorage';
 
 
@@ -22,6 +22,17 @@ export const BorrowDeviceThunk = (id) => async (dispatch) => {
     try {
         await devicesAPI.borrowDevice(id, token);
         dispatch(borrowDevice())
+        dispatch(GetDevicesRequestThunk())
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const BringBackDeviceThunk = (id) => async (dispatch) => {
+    const token = getByKeyFromLocalStorage(tokenKey)
+    try {
+        await devicesAPI.bringBackDevice(id, token);
+        dispatch(bringBackDevice())
         dispatch(GetDevicesRequestThunk())
     } catch (error) {
         console.log(error)

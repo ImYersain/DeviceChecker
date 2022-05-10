@@ -4,6 +4,7 @@ export const DEVICES_ERROR = 'DEVICES_ERROR';
 export const SHOW_ALLOWED = 'SHOW_ALLOWED';
 export const SORT_DEVICES = 'SORT_DEVICES';
 export const BORROW_DEVICE = 'BORROW_DEVICE';
+export const BRING_BACK_DEVICE = 'BRING_BACK_DEVICE';
 
 
 export const getDevicesRequset = () => {
@@ -37,6 +38,12 @@ export const sortDevices = (payload) => {
 export const borrowDevice = (payload) => {
     return {
         type: BORROW_DEVICE,
+        payload
+    }
+}
+export const bringBackDevice = (payload) => {
+    return {
+        type: BRING_BACK_DEVICE,
         payload
     }
 }

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { compose } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
-import { BorrowDeviceThunk, GetDevicesRequestThunk } from '../../redux/deviceList/deviceListThunk';
+import { BorrowDeviceThunk, BringBackDeviceThunk, GetDevicesRequestThunk } from '../../redux/deviceList/deviceListThunk';
 import { withAuthRedirect } from '../hoc/withAuthRedirect';
-import DeviceList from './DeviceList';
+import { deleteDeviceThunk } from '../../redux/deleteDevice/deleteDeviceThunk';
 import { getDevices, hasToBeSorted, selectSortedDevices } from '../../redux/deviceList/deviceListSelector';
 import { getUser } from '../../redux/auth/authSelector';
-import { deleteDeviceThunk } from '../../redux/deleteDevice/deleteDeviceThunk';
+import DeviceList from './DeviceList';
 
 const DeviceListContainer = () => {
     const dispatch = useDispatch();
@@ -25,10 +25,14 @@ const DeviceListContainer = () => {
     const onBorrow = (id) => {
         dispatch(BorrowDeviceThunk(id))
     }
+    const onBringBackDevice = (id) => {
+        dispatch(BringBackDeviceThunk(id))
+    }
 
 
     return <>
-        <DeviceList devices={shouldSort ? sortedDevices : devices} user={user} onDeleteDevice={onDeleteDevice} onBorrow={onBorrow} />        
+        <DeviceList devices={shouldSort ? sortedDevices : devices} user={user} 
+        onDeleteDevice={onDeleteDevice} onBorrow={onBorrow} onBringBackDevice={onBringBackDevice} />        
     </>
 }
 

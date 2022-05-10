@@ -24,8 +24,6 @@ export const AppHeader = ({ isAuth, user, onLogout, onAddDevice }) => {
                 <div className={styles.loginBlock}>
                     {isAuth ? <>
                         <img style={{ 'width': '40px', 'height': '40px', 'marginRight': '10px' }} src={authorizedAvatar} alt='authorized-avatar'></img>
-                        {/* <NavLink to={'/login'} style={{textDecoration: 'none', color: 'black', margin: '10px'}}>
-                            logout</NavLink> */}
                         <div style={{ 'display': 'flex', 'flexDirection': 'column' }}>
                             <div>{user.login}</div>
                             <div style={{'display': 'flex', 'marginTop': '5px'}}>

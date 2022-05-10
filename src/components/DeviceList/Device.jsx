@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import notFound from '../../assets/images/not-found.png';
 
-export const Device = ({device, user, onDeleteDevice, onBorrow}) => {
+export const Device = ({device, user, onDeleteDevice, onBorrow, onBringBackDevice}) => {
     
     const isDisabled = device.hasOwnProperty('borrowed');
 
@@ -37,8 +37,8 @@ export const Device = ({device, user, onDeleteDevice, onBorrow}) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    {device.borrowed? <Button>bring back</Button>:null}
-                    <Button disabled={isDisabled} variant='contained' onClick={() => onBorrow(device.id)} style={{ margin: '0 auto', color: 'black', backgroundColor: (isDisabled?'#edf2f6':'orange') }} size="large" >Take it</Button>
+                    {device.borrowed? <Button onClick={() => onBringBackDevice(device.id)} style={{ margin: '0 auto', color: 'black', backgroundColor: 'orange' }} > bring back</Button>:null}
+                    <Button disabled={isDisabled} variant='contained' onClick={() => onBorrow(device.id)} style={{ margin: '0 auto', color: (isDisabled?'gray':'black'), backgroundColor: (isDisabled?'#edf2f6':'orange')}} size="large" >Take it</Button>
                     {user.type === 'admin'? <Button type='submit' onClick={e => onDeleteDevice(device.id)} style={{ margin: '0 auto', color: 'black', backgroundColor: 'red' }} size="large" >Delete</Button> : null}
                 </CardActions>
             </Card>

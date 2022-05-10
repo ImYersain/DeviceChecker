@@ -44,13 +44,11 @@ export const devicesAPI = {
             'vendor': vendor,
             'model': model,
             'image': image,
-            }
-        , { headers: {
+            }, 
+        { headers: {
             'Auth-Token': token
         }})
-        .then(response => {
-            return response.data
-        })
+        
     },
 
     deleteDevice({token, id}){
@@ -63,6 +61,14 @@ export const devicesAPI = {
 
     borrowDevice(id, token){
         return instance.post(`/phones/${id}/borrow`, {},
+        { headers: {
+            'Auth-token': token
+        }
+    })
+    },
+
+    bringBackDevice(id, token){
+        return instance.post(`/phones/${id}/return`, {},
         { headers: {
             'Auth-token': token
         }

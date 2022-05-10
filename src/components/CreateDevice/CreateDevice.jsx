@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -50,8 +50,8 @@ export const CreateDevice = ({onIdChange, onModelChange, handleChangeVendor, han
                             </Select>
                 </FormControl>
                 {textFieldCreater('image', props.image, onImageChange)}
-                <Button onClick={onPostRequest} size='small' variant="text"  style={{ color: 'black', backgroundColor: 'orange', width: '100px'}}>Add device</Button>
-                <Button onClick={onHome} size='small' variant="text"  style={{ color: 'black', backgroundColor: 'orange', width: '100px'}}>Home</Button>
+                <Button onClick={onPostRequest} size='small' variant="text"  style={{ color: 'black', backgroundColor: 'orange'}}>Add device</Button>
+                <Button onClick={onHome} size='small' variant="text"  style={{ color: 'black', backgroundColor: 'orange'}}>Home</Button>
             </Stack>
         </div> 
     </div>

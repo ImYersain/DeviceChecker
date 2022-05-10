@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -59,28 +59,31 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 
-export const SearchPanel = () => {
+export const SearchPanel = ({setSearchValue}) => {
     const [checked, setChecked] = useState(false);
     const dispatch = useDispatch();
+    const [os, setOs] = useState('all');
+    const [vendor, setVendor] = useState('all');
 
     const selectAllowedDevice = () => {
         dispatch(showAllowed(!checked));
         setChecked((prev) => !prev);
     }
 
-    const [os, setOs] = useState('all');
     const handleChangeOs = (event) => {
         const selectedOs = event.target.value;
         setOs(selectedOs);
         dispatch(sortDevices({os : selectedOs, vendor}))
         
     };
-    const [vendor, setVendor] = useState('all');
+    
     const handleChangeVendor = (event) => {
         const selectedVendors = event.target.value; 
         setVendor(selectedVendors);
         dispatch(sortDevices({os, vendor: selectedVendors}))
     };
+  
+
 
     return (
             <Box sx={{ flexGrow: 1 }}>
@@ -95,7 +98,7 @@ export const SearchPanel = () => {
                         >
                             DeviceChecker
                         </Typography>
-                        <Search>
+                        <Search onChange={(e) => setSearchValue(e.target.value)}>
                             <SearchIconWrapper>
                                 <SearchIcon />
                             </SearchIconWrapper>
@@ -104,12 +107,6 @@ export const SearchPanel = () => {
                                 inputProps={{ 'aria-label': 'search' }}
                             />
                         </Search>
-                        {/* <Select id="system" value='All' label="System" >
-                            <MenuItem value='All'>All</MenuItem>
-                            <MenuItem value='Ios'>IOS</MenuItem>
-                            <MenuItem value='Android'>Android</MenuItem>
-                            <MenuItem value='Windows'>Windows</MenuItem>
-                        </Select> */}
 
                         <FormControl sx={{ m: 1, minWidth: 150 }}>
                         <InputLabel id="demo-simple-select-autowidth-label">Brand</InputLabel>
