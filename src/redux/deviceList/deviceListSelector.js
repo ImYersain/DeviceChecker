@@ -1,17 +1,16 @@
 export const selectDeviceReducer = (state) => state.deviceListPage
 
 export const getDevices = (state) => {
-    return selectDeviceReducer(state).devices
+    return state.deviceListPage.devices
 }
 
-export const hasToBeSorted = (state) => {
+export const willBeSorted = (state) => {
     const {sortOs, sortVendor, areAllowed} =  selectDeviceReducer(state)
     return sortOs !== 'all' || sortVendor !== 'all' || areAllowed
 }
 
 export const selectSortedDevices = (state) => {
     const {sortOs, sortVendor, devices, areAllowed} = selectDeviceReducer(state);
-
     let sortedDevices = [] 
 
     if(sortOs !== 'all') {
@@ -20,9 +19,6 @@ export const selectSortedDevices = (state) => {
     if(sortVendor !== 'all') {
         sortedDevices = [...devices.filter(device => device.vendor?.toLowerCase() === sortVendor.toLowerCase())]
     }
-
-
-
 
     if(sortOs !== 'all' && sortVendor !== 'all') {
         sortedDevices = [...devices.filter(device => device.os?.toLowerCase() === sortOs.toLowerCase() && device.vendor?.toLowerCase() === sortVendor.toLowerCase())]

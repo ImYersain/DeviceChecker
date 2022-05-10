@@ -61,9 +61,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export const SearchPanel = ({setSearchValue}) => {
     const [checked, setChecked] = useState(false);
-    const dispatch = useDispatch();
     const [os, setOs] = useState('all');
     const [vendor, setVendor] = useState('all');
+    const dispatch = useDispatch();
 
     const selectAllowedDevice = () => {
         dispatch(showAllowed(!checked));

@@ -11,7 +11,7 @@ const DeviceList = ({devices, user, onDeleteDevice, onBorrow, onBringBackDevice}
     const [searchValue, setSearchValue] = useState('');
 
     const searchedDevices = devices.filter(device => {
-        return device.model.toLowerCase().includes(searchValue.toLocaleLowerCase()) 
+        return device.model?.toLowerCase().includes(searchValue?.toLocaleLowerCase()) 
     })
 
     return (
