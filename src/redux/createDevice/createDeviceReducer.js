@@ -1,4 +1,4 @@
-import { DEVICES_SUCCESS, GET_DEVICES_REQUEST } from "../deviceList/deviceListActionCreater";
+import { DEVICES_SUCCESS } from "../deviceList/deviceListActionCreater";
 import { POST_ERROR, POST_REQUEST, POST_SUCCESS } from "./createDeviceActionCreater";
 
 

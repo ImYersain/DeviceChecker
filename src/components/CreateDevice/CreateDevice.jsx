@@ -45,7 +45,6 @@ export const CreateDevice = ({onIdChange, onModelChange, handleChangeVendor, han
                             <MenuItem value='lenovo'>LENOVO</MenuItem>
                             <MenuItem value='motorola'>MOTOROLA</MenuItem>
                             <MenuItem value='huawei'>HUAWEI</MenuItem>
-                            <MenuItem value='vadafone'>VADAFONE</MenuItem>
                             <MenuItem value='asus'>ASUS</MenuItem>
                             </Select>
                 </FormControl>
