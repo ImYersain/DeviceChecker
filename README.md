@@ -1,4 +1,13 @@
 # Getting Started with Create React App
+test users:
+
+admin 
+login: gandalf.the.grey@etnetera.cz, 
+heslo: wh1tew1zard
+
+user:
+login: frodo.baggins@etnetera.cz,
+heslo: theoner1ng 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
