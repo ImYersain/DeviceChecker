@@ -1,32 +1,12 @@
-import * as axios from 'axios';
+import { DeviceType } from './../types/device';
+import { instance, RequestPropsType } from "./Api"
 
 
-const instance = axios.create({
-    baseURL: 'https://js-test-api.etnetera.cz/api/v1'})
-
-
-
-export const authAPI = {
-    
-    login(login, password){
-        return instance.post(`/login`,{ login, password })
-    },  
-    logout(){
-        return instance.delete(`/login`)
-    },
-    userMe({token, id}){
-        return instance.get(`users/${id}`, {
-            headers: {
-                'Auth-Token': token
-            }
-        })
-    }
-}
 
 export const devicesAPI = {
-    
-    getDevices(token){
-        return instance.get(`/phones`, { 
+
+    getDevices(token: any ){
+        return instance.get<Array<DeviceType>>(`/phones`, { 
             headers: {
                 'Auth-Token': token
             }
@@ -36,7 +16,7 @@ export const devicesAPI = {
         })
     },
     
-    postDevice({id, model, os, vendor, image}, token){
+    postDevice({id, model, os, vendor, image}:DeviceType, token: any){
         return instance.post(`/phones/`,
          {
             'code': id,
@@ -51,7 +31,7 @@ export const devicesAPI = {
         
     },
 
-    deleteDevice({token, id}){
+    deleteDevice({token, id}: RequestPropsType){
         return instance.delete(`/phones/${id}`,  
         {  headers: {
                 'Auth-token': token
@@ -59,7 +39,7 @@ export const devicesAPI = {
         })
     },
 
-    borrowDevice(id, token){
+    borrowDevice(token: any, id: string | null){
         return instance.post(`/phones/${id}/borrow`, {},
         { headers: {
             'Auth-token': token
@@ -67,7 +47,7 @@ export const devicesAPI = {
     })
     },
 
-    bringBackDevice(id, token){
+    bringBackDevice(token: any, id: string | null){
         return instance.post(`/phones/${id}/return`, {},
         { headers: {
             'Auth-token': token
