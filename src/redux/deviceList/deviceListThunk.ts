@@ -1,38 +1,39 @@
-import { devicesAPI } from '../../api/Api';
+import { devicesAPI } from '../../api/devicesAPI';
 import { tokenKey } from '../../utils/constants';
-import { devicesSuccess, devicesError, getDevicesRequset, borrowDevice, bringBackDevice } from './deviceListActionCreater';
 import { getByKeyFromLocalStorage } from '../../utils/localStorage';
+import { AppDispatch } from '../redux-store';
+import { deviceListSlice } from './deviceListReducer';
 
 
 
 
-export const GetDevicesRequestThunk = () => async (dispatch) => {
-    dispatch(getDevicesRequset())
+
+
+export const GetDevicesRequestThunk = () => async (dispatch: AppDispatch) => {
+    dispatch(deviceListSlice.actions.getDevicesRequest())
     const token = getByKeyFromLocalStorage(tokenKey)
     try {
         const data = await devicesAPI.getDevices(token);
-        dispatch(devicesSuccess(data))   
+        dispatch(deviceListSlice.actions.devicesSuccess(data))   
     } catch (error) {
-        dispatch(devicesError(error))
+        dispatch(deviceListSlice.actions.devicesError(error))
     }
 } 
 
-export const BorrowDeviceThunk = (id) => async (dispatch) => {
+export const BorrowDeviceThunk = (id:number | null) => async (dispatch: AppDispatch) => {
     const token = getByKeyFromLocalStorage(tokenKey)
     try {
         await devicesAPI.borrowDevice(id, token);
-        dispatch(borrowDevice())
         dispatch(GetDevicesRequestThunk())
     } catch (error) {
         console.log(error)
     }
 }
 
-export const BringBackDeviceThunk = (id) => async (dispatch) => {
+export const BringBackDeviceThunk = (id:number | null) => async (dispatch: AppDispatch) => {
     const token = getByKeyFromLocalStorage(tokenKey)
     try {
         await devicesAPI.bringBackDevice(id, token);
-        dispatch(bringBackDevice())
         dispatch(GetDevicesRequestThunk())
     } catch (error) {
         console.log(error)

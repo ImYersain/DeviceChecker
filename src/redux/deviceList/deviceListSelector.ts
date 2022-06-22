@@ -1,17 +1,20 @@
-export const selectDeviceReducer = (state) => state.deviceListPage
+import { RootState } from './../redux-store';
 
-export const getDevices = (state) => {
+
+export const selectDeviceReducer = (state: RootState) => state.deviceListPage
+
+export const getDevices = (state: RootState) => {
     return state.deviceListPage.devices
 }
 
-export const willBeSorted = (state) => {
+export const willBeSorted = (state: RootState) => {
     const {sortOs, sortVendor, areAllowed} =  selectDeviceReducer(state)
     return sortOs !== 'all' || sortVendor !== 'all' || areAllowed
 }
 
-export const selectSortedDevices = (state) => {
+export const selectSortedDevices = (state: RootState) => {
     const {sortOs, sortVendor, devices, areAllowed} = selectDeviceReducer(state);
-    let sortedDevices = [] 
+    let sortedDevices: Array<any> = [];
 
     if(sortOs !== 'all') {
         sortedDevices = [...devices.filter(device => device.os?.toLowerCase() === sortOs.toLowerCase())]
