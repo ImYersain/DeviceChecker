@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -8,9 +8,27 @@ import styles from './CreateDeviceContainer.module.scss';
 import { FormControl, InputLabel, MenuItem } from '@mui/material';
 
 
-export const CreateDevice = ({onIdChange, onModelChange, handleChangeVendor, handleChangeOs, onImageChange, onPostRequest, id, onHome, ...props}) => {
 
-    const textFieldCreater = (placeholder, value, onChange) => {
+interface PropsType {
+    onIdChange: (arg: any) => void,
+    onModelChange: (arg: any) => void, 
+    handleChangeVendor: (arg: any) => void,
+    handleChangeOs: (arg: any) => void,
+    onImageChange: (arg: any) => void,
+    onPostRequest: (arg: any) => void,
+    onHome: (arg: any) => void,
+
+    id: number | null,
+    image: string | null,
+    os: string | null,
+    vendor: string | null,
+    model: string | null
+}
+
+
+export const CreateDevice:FC<PropsType> = ({onIdChange, onModelChange, handleChangeVendor, handleChangeOs, onImageChange, onPostRequest, id, onHome, ...props}) => {
+
+    const textFieldCreater = (placeholder: string, value: any, onChange: (arg: any) => void) => {
         return <TextField onChange={onChange} placeholder={placeholder} hiddenLabel id="filled-hidden-label-small" defaultValue={value} variant="filled" size="small" />
     }
     

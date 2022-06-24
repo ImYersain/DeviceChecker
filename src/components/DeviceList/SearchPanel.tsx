@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
@@ -11,8 +11,10 @@ import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useDispatch } from 'react-redux';
-import { showAllowed, sortDevices } from '../../redux/deviceList/deviceListActionCreater';
+// import { showAllowed, sortDevices } from '../../redux/deviceList/deviceListActionCreater';
 import { FormControl, InputLabel } from '@mui/material';
+import { AppDispatch } from '../../redux/redux-store';
+import { deviceListSlice } from '../../redux/deviceList/deviceListReducer';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -58,29 +60,33 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
+interface PropsType {
+    setSearchValue: (arg: any) => void
+}
 
-export const SearchPanel = ({setSearchValue}) => {
+
+export const SearchPanel:FC<PropsType> = ({setSearchValue}) => {
     const [checked, setChecked] = useState(false);
     const [os, setOs] = useState('all');
     const [vendor, setVendor] = useState('all');
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
 
     const selectAllowedDevice = () => {
-        dispatch(showAllowed(!checked));
+        dispatch(deviceListSlice.actions.showAllowed(!checked));
         setChecked((prev) => !prev);
     }
 
-    const handleChangeOs = (event) => {
+    const handleChangeOs = (event: any) => {
         const selectedOs = event.target.value;
         setOs(selectedOs);
-        dispatch(sortDevices({os : selectedOs, vendor}))
+        dispatch(deviceListSlice.actions.sortDevices({os : selectedOs, vendor}))
         
     };
     
-    const handleChangeVendor = (event) => {
+    const handleChangeVendor = (event: any) => {
         const selectedVendors = event.target.value; 
         setVendor(selectedVendors);
-        dispatch(sortDevices({os, vendor: selectedVendors}))
+        dispatch(deviceListSlice.actions.sortDevices({os, vendor: selectedVendors}))
     };
   
 
@@ -98,7 +104,7 @@ export const SearchPanel = ({setSearchValue}) => {
                         >
                             DeviceChecker
                         </Typography>
-                        <Search onChange={(e) => setSearchValue(e.target.value)}>
+                        <Search onChange={(e: any) => setSearchValue(e.target.value)}>
                             <SearchIconWrapper>
                                 <SearchIcon />
                             </SearchIconWrapper>

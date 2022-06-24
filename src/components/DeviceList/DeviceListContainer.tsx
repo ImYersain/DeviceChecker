@@ -7,9 +7,11 @@ import { deleteDeviceThunk } from '../../redux/deleteDevice/deleteDeviceThunk';
 import { getDevices, willBeSorted, selectSortedDevices } from '../../redux/deviceList/deviceListSelector';
 import { getUser } from '../../redux/auth/authSelector';
 import DeviceList from './DeviceList';
+import { AppDispatch } from '../../redux/redux-store';
+
 
 const DeviceListContainer = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
     const devices = useSelector(getDevices);
     const user = useSelector(getUser);
     const sortedDevices = useSelector(selectSortedDevices);
@@ -19,13 +21,13 @@ const DeviceListContainer = () => {
         dispatch(GetDevicesRequestThunk())
     }, [dispatch])
 
-    const onDeleteDevice = (id) => {
+    const onDeleteDevice = (id: number | null) => {
         dispatch(deleteDeviceThunk(id))
     }
-    const onBorrow = (id) => {
+    const onBorrow = (id: number | null) => {
         dispatch(BorrowDeviceThunk(id))
     }
-    const onBringBackDevice = (id) => {
+    const onBringBackDevice = (id: number | null) => {
         dispatch(BringBackDeviceThunk(id))
     }
 
