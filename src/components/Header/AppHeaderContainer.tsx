@@ -4,14 +4,15 @@ import { AppHeader } from './AppHeader';
 import { getIsAuth, getUser } from '../../redux/auth/authSelector';
 import { requestLogoutThunk } from '../../redux/auth/authThunk';
 import { useNavigate } from 'react-router';
+import { AppDispatch } from '../../redux/redux-store';
 
 
 
 export const AppHeaderContainer = () => {
 
+    const dispatch = useDispatch<AppDispatch>();
     const isAuth = useSelector(getIsAuth);
     const user = useSelector(getUser);
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const onLogout = () => {

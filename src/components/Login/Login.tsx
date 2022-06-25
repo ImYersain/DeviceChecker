@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {Navigate} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -7,7 +7,16 @@ import SendIcon from '@mui/icons-material/Send';
 
 import styles from './Login.module.scss';
 
-const Login = ({isAuth,onLoginRequest,onLoginChange,onPasswordChange, login, password}) => {
+interface PropsType {
+    isAuth: boolean,
+    onLoginRequest: (arg:any) => void,
+    onLoginChange: (arg:any) => void,
+    onPasswordChange: (arg:any) => void,
+    login: string | null,
+    password: string | null
+}
+
+const Login:FC<PropsType> = ({isAuth,onLoginRequest,onLoginChange,onPasswordChange, login, password}) => {
 
     const ariaLabel = { 'aria-label': 'description' };
 
