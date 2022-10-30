@@ -5,7 +5,7 @@
 login: gandalf.the.grey@etnetera.cz, 
 heslo: wh1tew1zard
 
-<b>user:/b></br> 
+<b>user:</b></br> 
 login: frodo.baggins@etnetera.cz,
 heslo: theoner1ng 
 
