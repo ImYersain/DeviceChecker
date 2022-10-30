@@ -1,11 +1,11 @@
 # Getting Started with Create React App
-test users:
+<b> test users: </b>
 
-admin 
+<b>admin</b></br> 
 login: gandalf.the.grey@etnetera.cz, 
 heslo: wh1tew1zard
 
-user:
+<b>user:/b></br> 
 login: frodo.baggins@etnetera.cz,
 heslo: theoner1ng 
 
