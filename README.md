@@ -2,12 +2,12 @@
 <b> test users: </b>
 
 <b>admin</b></br> 
-login: gandalf.the.grey@etnetera.cz, 
-heslo: wh1tew1zard
+email: gandalf.the.grey@etnetera.cz, 
+password: wh1tew1zard
 
 <b>user:</b></br> 
-login: frodo.baggins@etnetera.cz,
-heslo: theoner1ng 
+email: frodo.baggins@etnetera.cz,
+password: theoner1ng 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
