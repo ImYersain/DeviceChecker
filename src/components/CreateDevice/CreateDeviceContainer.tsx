@@ -22,7 +22,7 @@ const CreateDeviceContainer = () => {
         if(wasCreated){
             navigate('/')
         }
-    }, [wasCreated])
+    }, [wasCreated, navigate]);
 
 
     const onIdChange = (e: any) => {
