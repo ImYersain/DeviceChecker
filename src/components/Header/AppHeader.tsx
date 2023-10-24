@@ -28,7 +28,7 @@ export const AppHeader:FC<PropsType> = ({ isAuth, user, onLogout, onAddDevice })
         <>
             <div className={styles.headerWrapper}>
                 <div className={styles.logoBlock}>
-                    <img src="https://www.etnetera.cz/-a289--png-WXP_F2wn/etnetera-barevne" alt='logo' />                 
+                    <img src="https://news.microsoft.com/wp-content/uploads/prod/sites/52/2019/08/etnetera-barevne.png" alt='logo' />                 
                 </div>
                 <div className={styles.loginBlock}>
                     {isAuth ? <>
