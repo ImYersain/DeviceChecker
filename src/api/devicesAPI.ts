@@ -34,23 +34,23 @@ export const devicesAPI = {
     deleteDevice({token, id}: RequestPropsType){
         return instance.delete(`/phones/${id}`,  
         {  headers: {
-                'Auth-token': token
+                'Auth-Token': token
             }
         })
     },
 
-    borrowDevice(token: any, id: string | null){
+    borrowDevice({token, id}: RequestPropsType){
         return instance.post(`/phones/${id}/borrow`, {},
         { headers: {
-            'Auth-token': token
+            'Auth-Token': token
         }
     })
     },
 
-    bringBackDevice(token: any, id: string | null){
+    bringBackDevice({token, id}: RequestPropsType){
         return instance.post(`/phones/${id}/return`, {},
         { headers: {
-            'Auth-token': token
+            'Auth-Token': token
         }
     })
     }

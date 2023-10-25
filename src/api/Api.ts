@@ -6,6 +6,6 @@ export const instance = axios.default.create({
 
 
 export interface RequestPropsType {
-    token: null | any | string
+    token: any,
     id: string | number | null 
 }

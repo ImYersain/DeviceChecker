@@ -5,8 +5,7 @@ import { Device } from './Device';
 import styles from './DeviceList.module.scss';
 import { DeviceType } from '../../types/device';
 import { UserType } from '../../types/user';
-
-
+import { NotFounded } from '../NotFounded/NotFounded';
 
 
 interface PropsType {
@@ -27,10 +26,10 @@ const DeviceList:FC<PropsType> = ({devices, user, onDeleteDevice, onBorrow, onBr
     return (
         <>
             <SearchPanel setSearchValue={setSearchValue} />
-            <div className={styles.DeviceListWrapper}>
+            {searchedDevices.length ? ( <div className={styles.DeviceListWrapper}>
                 {searchedDevices.map(device => <Device key={device.id} device={device} user={user} 
                 onDeleteDevice={onDeleteDevice} onBorrow={onBorrow} onBringBackDevice={onBringBackDevice}/> )}
-            </ div>
+            </ div> ) : <NotFounded />}
         </>
     )
 }

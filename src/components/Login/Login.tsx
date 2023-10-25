@@ -17,23 +17,24 @@ interface PropsType {
 }
 
 const Login:FC<PropsType> = ({isAuth,onLoginRequest,onLoginChange,onPasswordChange, login, password}) => {
-
     const ariaLabel = { 'aria-label': 'description' };
 
     return (
-        <>
-        {isAuth? <Navigate to='/devices'/>: <div className={styles.LoginFormWrapper}>
-           
-            <Box component="form" sx={{'& > :not(style)': { m: 1 },}} noValidate autoComplete="off" >
-                <h2 style={{textAlign: 'center'}}>Login</h2>
-                <Input type='email' onChange={onLoginChange} defaultValue={login} placeholder="Login" inputProps={ariaLabel} />
-                <Input type='password' onChange={onPasswordChange} defaultValue={password} placeholder="Password" inputProps={ariaLabel} />
-                <Button size="small" onClick={onLoginRequest} style={{backgroundColor: 'orange', color:'black', float:'right'}}
-                variant="contained" endIcon={<SendIcon />}>Send</Button>
-            </Box>
+        <div className={styles.loginWrapper}>
+            <div className={styles.login}>
+            {isAuth? <Navigate to='/devices'/>: <div className={styles.LoginFormWrapper}>
+            
+                <Box component="form" sx={{'& > :not(style)': { m: 1 },}} noValidate autoComplete="off" >
+                    <h2 style={{textAlign: 'center'}}>Login</h2>
+                    <Input type='email' onChange={onLoginChange} defaultValue={login} placeholder="Login" inputProps={ariaLabel} />
+                    <Input type='password' onChange={onPasswordChange} defaultValue={password} placeholder="Password" inputProps={ariaLabel} />
+                    <Button size="small" onClick={onLoginRequest} style={{backgroundColor: 'orange', color:'black', float:'right'}}
+                    variant="contained" endIcon={<SendIcon />}>Send</Button>
+                </Box>
+                </div>
+            }
             </div>
-        }
-        </>
+        </div>
     )
 }
 

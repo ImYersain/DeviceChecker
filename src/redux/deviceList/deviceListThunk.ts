@@ -23,7 +23,7 @@ export const GetDevicesRequestThunk = () => async (dispatch: AppDispatch) => {
 export const BorrowDeviceThunk = (id:number | null) => async (dispatch: AppDispatch) => {
     const token = getByKeyFromLocalStorage(tokenKey)
     try {
-        await devicesAPI.borrowDevice(id, token);
+        await devicesAPI.borrowDevice({id, token});
         dispatch(GetDevicesRequestThunk())
     } catch (error) {
         console.log(error)
@@ -33,7 +33,7 @@ export const BorrowDeviceThunk = (id:number | null) => async (dispatch: AppDispa
 export const BringBackDeviceThunk = (id:number | null) => async (dispatch: AppDispatch) => {
     const token = getByKeyFromLocalStorage(tokenKey)
     try {
-        await devicesAPI.bringBackDevice(id, token);
+        await devicesAPI.bringBackDevice({id, token});
         dispatch(GetDevicesRequestThunk())
     } catch (error) {
         console.log(error)

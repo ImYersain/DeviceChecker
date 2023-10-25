@@ -1,13 +1,20 @@
 # Getting Started with Create React App
-<b> test users: </b>
 
-<b>admin</b></br> 
-email: gandalf.the.grey@etnetera.cz, 
-password: wh1tew1zard
+## Test Users
 
-<b>user:</b></br> 
-email: frodo.baggins@etnetera.cz,
-password: theoner1ng 
+### Admin
+
+- Email: gandalf.the.grey@etnetera.cz
+- Password: wh1tew1zard
+
+### User
+
+- Email: frodo.baggins@etnetera.cz
+- Password: theoner1ng
+
+<br/><br/><br/><br/><br/><br/>
+
+### 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
