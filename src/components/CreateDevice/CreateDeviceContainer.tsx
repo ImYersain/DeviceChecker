@@ -50,7 +50,7 @@ const CreateDeviceContainer = () => {
         setVendor(event.target.value);
     };
 
-    const onPostRequest = (e: any) => {
+    const onPostRequest = () => {
         dispatch(requestPostThunk({id, model, os, vendor, image}))
     }
 

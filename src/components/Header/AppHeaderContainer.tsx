@@ -24,7 +24,5 @@ export const AppHeaderContainer = () => {
 
 
 
-    return <>
-            <AppHeader isAuth={isAuth} user={user} onLogout={onLogout} onAddDevice={onAddDevice} />
-        </>
+    return <AppHeader isAuth={isAuth} user={user} onLogout={onLogout} onAddDevice={onAddDevice} />
 }

@@ -8,71 +8,61 @@ import styles from './CreateDeviceContainer.module.scss';
 import { FormControl, InputLabel, MenuItem } from '@mui/material';
 
 
-
+type Nullable<T> = T | null;
+type functionsType = (arg: any) => void;
 interface PropsType {
-    onIdChange: (arg: any) => void,
-    onModelChange: (arg: any) => void, 
-    handleChangeVendor: (arg: any) => void,
-    handleChangeOs: (arg: any) => void,
-    onImageChange: (arg: any) => void,
-    onPostRequest: (arg: any) => void,
-    onHome: (arg: any) => void,
+    onIdChange: functionsType,
+    onModelChange: functionsType, 
+    handleChangeVendor: functionsType,
+    handleChangeOs: functionsType,
+    onImageChange: functionsType,
+    onPostRequest: () => void,
+    onHome: () => void,
 
-    id: number | null,
-    image: string | null,
-    os: string | null,
-    vendor: string | null,
-    model: string | null
+    id: Nullable<number>,
+    image: Nullable<string>,
+    os: Nullable<string>,
+    vendor: Nullable<string>,
+    model: Nullable<string>
 }
 
 
 export const CreateDevice:FC<PropsType> = ({onIdChange, onModelChange, handleChangeVendor, handleChangeOs, onImageChange, onPostRequest, id, onHome, ...props}) => {
+    const brands = [{id: 1, name: 'APPLE'}, {id: 2, name: 'SAMSUNG'}, {id: 3, name: 'ACER'}, {id: 4, name: 'LG'}, {id: 5, name: 'XIAOMI'}, {id: 6, name: 'LENOVO'}, {id: 7, name: 'MOTOROLA'}, {id: 8, name: 'HUAWEI'}, {id: 9, name: 'ASUS'}];
+    const operationSystems= [{id: 1, name: 'IOS'}, {id: 2, name: 'ANDROID'}, {id: 3, name: 'WINDOWS'}];
 
-    const textFieldCreater = (placeholder: string, value: any, onChange: (arg: any) => void) => {
+    const textFieldCreater = (placeholder: string, value: number | string | null, onChange: (arg: any) => void) => {
         return <TextField onChange={onChange} placeholder={placeholder} hiddenLabel id="filled-hidden-label-small" defaultValue={value} variant="filled" size="small" />
     }
-    
+
 
     return <>
     <div className={styles.createFormWrapper}>
-        <div>
+        <div className={styles.createForm}>
             <h3>New device</h3>
             <Stack
                 component="form" sx={{ width: '25ch'}} spacing={2} noValidate autoComplete="off" >
-                {/* <TextField onChange={onIdChange} placeholder='id' hiddenLabel id="filled-hidden-label-small" defaultValue={id} variant="filled" size="small" /> */}
                 {textFieldCreater('id', id, onIdChange)}
                 {textFieldCreater('model', props.model, onModelChange)}
 
-                <FormControl sx={{ m: 1, minWidth: 80 }}>
-                        <InputLabel id="demo-simple-select-autowidth-label">OS</InputLabel>
-                        <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={props.os} onChange={handleChangeOs} autoWidth label="Age">
-                        <MenuItem value='ios'>IOS</MenuItem>
-                        <MenuItem value='android'>Android</MenuItem>
-                        <MenuItem value='windows'>Windows</MenuItem>
-                        </Select>
+                <FormControl sx={{ m: 1 }}>
+                        <InputLabel>OS</InputLabel>
+                            <Select value={props.os} onChange={handleChangeOs} autoWidth label="Age">
+                            {operationSystems.map(({name, id}) => <MenuItem key={id} sx={{width: '220px'}} value={name.toLowerCase()}>{name}</MenuItem>)}
+                            </Select>
                 </FormControl>
 
-                <FormControl sx={{ m: 1, minWidth: 150 }}>
-                        <InputLabel id="demo-simple-select-autowidth-label">Brand</InputLabel>
-                            <Select labelId="demo-simple-select-autowidth-label" id="demo-simple-select-autowidth" value={props.vendor} onChange={handleChangeVendor} autoWidth label="OS">
-                            <MenuItem value='apple'>APPLE</MenuItem>
-                            <MenuItem value='samsung'>SAMSUNG</MenuItem>
-                            <MenuItem value='acer'>ACER</MenuItem>
-                            <MenuItem value='lg'>LG</MenuItem>
-                            <MenuItem value='xiaomi'>XIAOMI</MenuItem>
-                            <MenuItem value='lenovo'>LENOVO</MenuItem>
-                            <MenuItem value='motorola'>MOTOROLA</MenuItem>
-                            <MenuItem value='huawei'>HUAWEI</MenuItem>
-                            <MenuItem value='asus'>ASUS</MenuItem>
+                <FormControl sx={{ m: 1 }}>
+                        <InputLabel>Brand</InputLabel>
+                            <Select value={props.vendor} onChange={handleChangeVendor} autoWidth label="OS">
+                            {brands.map(({name, id}) => <MenuItem key={id} sx={{width: '220px'}} value={name.toLocaleLowerCase()}>{name}</MenuItem>)}
                             </Select>
                 </FormControl>
                 {textFieldCreater('image', props.image, onImageChange)}
-                <Button onClick={onPostRequest} size='small' variant="text"  style={{ color: 'black', backgroundColor: 'orange'}}>Add device</Button>
-                <Button onClick={onHome} size='small' variant="text"  style={{ color: 'black', backgroundColor: 'orange'}}>Home</Button>
+                <Button onClick={onPostRequest} size='small' variant="text">Add device</Button>
+                <Button onClick={onHome} size='small' variant="text">Home</Button>
             </Stack>
         </div> 
     </div>
-        
-        
     </>
 }

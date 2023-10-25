@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import notFound from '../../assets/images/not-found.png';
 import { DeviceType } from '../../types/device';
 import { UserType } from '../../types/user';
+import styles from './DeviceList.module.scss';
 
 
 
@@ -25,13 +26,13 @@ export const Device:FC<PropsType> = ({device, user, onDeleteDevice, onBorrow, on
 
     return (
             <Card sx={{ maxWidth: 345, margin: '30px 10px' }} >
-                <div style={{'height': '180px', 'width': '120px', 'margin':'20px auto'}}>
-                <CardMedia
-                    component="img"
-                    width="100%"
-                    image={device.image? device.image: notFound}
-                    alt="phone"
-                />
+                <div className={styles.CardImage}>
+                    <CardMedia
+                        component="img"
+                        width="100%"
+                        image={device.image? device.image: notFound}
+                        alt="phone"
+                    />
                 </div>
                 
                 <CardContent>

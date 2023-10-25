@@ -1,8 +1,31 @@
+.loginWrapper {
+    background-color: #edf2f6;
+    display: block;
+    width: 1300px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px 0px gray;
+    padding: 50px 0;
+}
+
 .LoginFormWrapper {
-    padding:10px;
+    padding: 10px;
     form {
         display: block;
         width: 200px;
         margin: 50px auto;
     }
+    button {
+        background-color: orange;
+        color: black;
+        float: right;
+    }
+}
+
+.login{
+	padding: 10px;
+    background-color: #fff;
+    border-radius: 5%;
+	width: 400px;
+    margin: 0 auto;
 }

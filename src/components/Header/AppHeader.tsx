@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import loginAvatar from '../../assets/images/login-avatar.png';
 import authorizedAvatar from '../../assets/images/authorized-avatar.png';
 import Button from '@mui/material/Button';
 
 import styles from './AppHeader.module.scss';
 import { UserType } from '../../types/user';
-
 
 
 interface PropsType {
@@ -16,10 +16,9 @@ interface PropsType {
     onAddDevice: (arg:any) => void
 }
 
-
 export const AppHeader:FC<PropsType> = ({ isAuth, user, onLogout, onAddDevice }) => {
-    
-    const buttonCreater = (value: string, handleClick: (arg:any) => void, marginRightValue?: any) => {
+    const navigate = useNavigate();
+    const buttonCreater = (value: string, handleClick: (arg:any) => void, marginRightValue?: string) => {
         return <Button onClick={handleClick} size='small' variant="text" 
         style={{ color: 'black', backgroundColor: 'white', width: '100px', marginRight: marginRightValue}}>{value}</Button>
     }    
@@ -27,7 +26,7 @@ export const AppHeader:FC<PropsType> = ({ isAuth, user, onLogout, onAddDevice })
     return (
         <>
             <div className={styles.headerWrapper}>
-                <div className={styles.logoBlock}>
+                <div onClick={() => navigate('/')} className={styles.logoBlock}>
                     <img src="https://news.microsoft.com/wp-content/uploads/prod/sites/52/2019/08/etnetera-barevne.png" alt='logo' />                 
                 </div>
                 <div className={styles.loginBlock}>

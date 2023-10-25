@@ -5,11 +5,28 @@
     margin-top: 10px;
     border-radius: 5px;
     box-shadow: 5px 5px 20px 0px gray;
+    padding: 20px 0;
     h3{
         text-align: center;
+        padding-top: 20px;
     }
     form{
         margin: 0 auto;
         padding: 30px 0;
     }
+    button {
+        color: black;
+        background-color: orange;
+    }
 }
+
+.createForm {
+    display: block;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5%;
+	padding:15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
