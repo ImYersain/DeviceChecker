@@ -1,6 +1,5 @@
-# Getting Started with Create React App
+# Test accounts (use it, for testing app):
 
-## Test Users
 
 ### Admin
 
@@ -15,6 +14,7 @@
 <br/><br/><br/><br/><br/><br/>
 
 ### 
+# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
